@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem
+        id="main_menu_flights_root"
+        name="Flights"/>
+
+    <menuitem
+        id="main_menu_flights_booking"
+        name="Flight Bookings"
+        parent="main_menu_flights_root"
+        sequence="1"/>
+
+    <menuitem
+        id="main_menu_flights_config"
+        name="Configuration"
+        parent="main_menu_flights_root"
+        sequence="2"/>
+
+</odoo>

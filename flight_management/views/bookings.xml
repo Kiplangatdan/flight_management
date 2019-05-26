@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="bookings_form" model="ir.ui.view">
+        <field name="name">bookings.form</field>
+        <field name="model">booking.booking</field>
+        <field name="arch" type="xml">
+            <form string="Bookings">
+                <sheet>
+                    <group>
+                        <field name="booking_number" readonly="1"/>
+                        <field name="flight_id"/>
+                        <field name="passenger_ids" widget="many2many_tags"/>
+                    </group>
+                    <notebook>
+                        <page name="connection" string="Connection">
+                            <field name="connection_ids"/>
+                        </page>
+                        <page name="protection" string="Protection">
+
+                        </page>
+                    </notebook>
+                </sheet>
+        </form>
+        </field>
+    </record>
+
+    <record id="bookings_tree" model="ir.ui.view">
+        <field name="name">bookings.tree</field>
+        <field name="model">booking.booking</field>
+        <field name="arch" type="xml">
+            <tree string="Flight Bookings">
+                <field name="booking_number"/>
+                <field name="flight_id"/>
+                <field name="passenger_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <act_window
+        id="action_bookings"
+        res_model="booking.booking"
+        name="Bookings"
+        view_mode="tree,form"
+    />
+    <menuitem id="menu_bookings"
+        name="Bookings"
+        action="action_bookings"
+        parent="main_menu_flights_booking"
+        sequence="2"/>
+</odoo>

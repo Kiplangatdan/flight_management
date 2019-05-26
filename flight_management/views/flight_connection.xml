@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="flight_connection_form" model="ir.ui.view">
+        <field name="name">flight.connection.form</field>
+        <field name="model">flight.connection</field>
+        <field name="arch" type="xml">
+            <form string="Flight Connections">
+                <sheet>
+                    <group name="top">
+                        <group name="left">
+                            <field name="passenger_id"/>
+                            <field name="first_flight_id"/>
+                        </group>
+                        <group name="right">
+                            <field name="second_flight_id"/>
+                            <field name="airport_id"/>
+                        </group>
+                    </group>
+                </sheet>
+        </form>
+        </field>
+    </record>
+
+    <record id="flight_connection_tree" model="ir.ui.view">
+        <field name="name">flight.connection.tree</field>
+        <field name="model">flight.connection</field>
+        <field name="arch" type="xml">
+            <tree string="Flight Connections">
+                <field name="name"/>
+                <field name="passenger_id"/>
+                <field name="first_flight_id"/>
+                <field name="second_flight_id"/>
+                <field name="airport_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <act_window
+        id="action_flight_connections"
+        res_model="flight.connection"
+        name="Connections"
+        view_mode="tree,form"
+    />
+    <menuitem id="menu_flight_connection"
+        name="Connections"
+        action="action_flight_connections"
+        parent="main_menu_flights_booking"
+        sequence="3"/>
+</odoo>

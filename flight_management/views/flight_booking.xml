@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="flight_booking_form" model="ir.ui.view">
+        <field name="name">flight.booking.form</field>
+        <field name="model">flight.booking</field>
+        <field name="arch" type="xml">
+            <form string="Flights">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="open_bookings" icon="fa-plane">
+                            <field string="Bookings" name="count_bookings" widget="statinfo"/>
+                        </button>
+                        <button class="oe_stat_button" type="object" name="open_bookings" icon="fa-exchange">
+                            <field string="Connections" name="count_connections" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group name="top">
+                        <group name="left">
+                            <field name="flight_id"/>
+                            <field name="dep_airport_id"/>
+                            <field name="arr_airport_id"/>
+                        </group>
+                        <group name="right">
+                            <field name="plane_id"/>
+                            <field name="dep_time"/>
+                            <field name="arr_time"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="bookings" string="Bookings">
+                            <field name="booking_ids">
+                                <tree>
+                                    <field name="booking_number"/>
+                                    <field name="passenger_ids"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="connection" string="Connections">
+                            <field name="connection_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+        </form>
+        </field>
+    </record>
+
+    <record id="flight_booking_tree" model="ir.ui.view">
+        <field name="name">flight.booking.tree</field>
+        <field name="model">flight.booking</field>
+        <field name="arch" type="xml">
+            <tree string="Flights">
+                <field name="flight_id"/>
+                <field name="plane_id"/>
+                <field name="dep_airport_id"/>
+                <field name="arr_airport_id"/>
+                <field name="dep_time"/>
+                <field name="arr_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <act_window
+        id="action_flight_booking"
+        res_model="flight.booking"
+        name="Flights"
+        view_mode="tree,form"
+    />
+    <menuitem id="menu_flights"
+        name="Flights"
+        action="action_flight_booking"
+        parent="main_menu_flights_booking"
+        sequence="1"/>
+</odoo>
